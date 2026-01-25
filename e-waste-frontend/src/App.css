@@ -1,0 +1,127 @@
+/* app.css - application-level styles (merge with existing content) */
+
+/* Color variables */
+:root {
+  --color-primary: #388e3c;
+  --color-secondary: #0277bd;
+  --color-background: #f0f4f8;
+  --color-card-bg: #ffffff;
+}
+
+/* Root container - centered max-width but full width on small screens */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;           /* Remove the 2rem gap */
+  min-height: 100vh;
+  /* transparent so body background (with symbols) is visible */
+  background-color: transparent;
+}
+
+/* ============================= */
+/* Animated recycling background */
+/* ============================= */
+
+@keyframes floatSymbols {
+  0% {
+    background-position:
+      15% 25%,
+      70% 60%,
+      5% 90%;
+  }
+  100% {
+    background-position:
+      80% 120%,
+      10% 40%,
+      60% 120%;
+  }
+}
+
+/* Body: keep same font + light color, add subtle icons */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* same base color as before */
+  background-color: var(--color-background);
+
+  /* sparse recycling icons (make sure public/recycle.svg exists) */
+  background-image:
+    url('/recycle.svg'),
+    url('/recycle.svg'),
+    url('/recycle.svg');
+
+  /* bigger sizes = fewer icons */
+  background-size:
+    220px,
+    260px,
+    240px;
+
+  /* only last layer repeats a bit */
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    repeat;
+
+  /* spread them out */
+  background-position:
+    15% 25%,
+    75% 65%,
+    5% 95%;
+
+  /* subtle overall effect */
+  opacity: 1;
+  animation: floatSymbols 60s linear infinite;
+}
+
+/* Form container (login/register) */
+.form-container {
+  text-align: left;
+  margin: 0 auto;
+  background-color: var(--color-card-bg);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Buttons/inputs */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.25rem rgba(56, 142, 60, 0.25);
+}
+
+.btn-success {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  font-weight: 600;
+}
+
+/* main wrapper */
+.main-app-wrapper {
+  width: 100%;
+}
+
+/* small utility styling */
+.alert-warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* In app.css */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem; /* internal spacing only */
+}
+
+/* Optional: keep this minimal so it doesn't affect layout */
+.global-animated-bg-wrapper {
+  min-height: 100vh;
+}

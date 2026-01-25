@@ -1,0 +1,32 @@
+/* FULL-BLEED layout: no gap between body and #root */
+/* Put this at the very top of your CSS imports */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* make body background the page background (full-bleed) */
+body {
+  margin: 0;           /* Remove browser default margin */
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: block;
+  background-color: var(--color-background, #f0f4f8);
+  font-family: system-ui, sans-serif;
+}
+
+/* #root uses full width — content can still be constrained with an internal container */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent; /* so the body background shows edge-to-edge */
+  margin: 0;
+  padding: 0; /* remove the 2rem gap — add internal padding inside a child container instead */
+}
