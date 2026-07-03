@@ -21,6 +21,16 @@ const RequestDetail = () => {
     // State for tracking active image view
     const [activeImage, setActiveImage] = useState(null); 
 
+    const getStatusBadge = (status) => {
+        switch (status) {
+            case 'PENDING': return 'badge bg-warning text-dark';
+            case 'APPROVED': return 'badge bg-primary';
+            case 'SCHEDULED': return 'badge bg-info';
+            case 'REJECTED': return 'badge bg-danger';
+            default: return 'badge bg-secondary';
+        }
+    }; 
+
     useEffect(() => {
         if (userRole !== 'ROLE_ADMIN') {
             navigate('/profile'); // Security guard
@@ -77,7 +87,7 @@ const RequestDetail = () => {
     };
 
     if (loading) return <div className="container mt-5">Loading Request Details...</div>;
-    if (!request) return <div className="container mt-5 text-danger">Request ID {requestId} not found.</div>;
+    if (!request) return <div className="container mt-5 text-danger">{message || `Request ID ${requestId} not found.`}</div>;
 
     // Split image paths for easier rendering
     const imageList = request.parsedImages || [];

@@ -50,9 +50,9 @@ const App = () => {
                     <Route path="*" element={<h1>404 Not Found</h1>} />
                     <Route path="/report" element={<ProtectedRoute><ReportPage /></ProtectedRoute>} />
 
-                    // 🟢 FIX: Add the new protected route
-<Route path="/requests" element={<ProtectedRoute><RequestHistoryPage /></ProtectedRoute>} />
-  <Route path="/admin/users" element={<ProtectedRoute><UserManagementPage /></ProtectedRoute>} />
+                    {/* 🟢 FIX: Add the new protected route */}
+                    <Route path="/requests" element={<ProtectedRoute><RequestHistoryPage /></ProtectedRoute>} />
+                    <Route path="/admin/users" element={<ProtectedRoute><UserManagementPage /></ProtectedRoute>} />
 
   <Route path="/report-issue" element={<ProtectedRoute><ReportIssue /></ProtectedRoute>} />
 

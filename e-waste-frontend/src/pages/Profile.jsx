@@ -398,8 +398,9 @@ const Profile = () => {
         if (!mounted) return;
         setMessage('Failed to load data. Check your connection.');
       } finally {
-        if (!mounted) return;
-        setLoading(false);
+        if (mounted) {
+          setLoading(false);
+        }
       }
     };
 

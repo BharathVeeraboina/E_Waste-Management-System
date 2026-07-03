@@ -12,7 +12,7 @@ const ChatbotComponent = () => {
     const [isSending, setIsSending] = useState(false);
     const chatEndRef = useRef(null);
 
-    const API_URL = '${import.meta.env.VITE_API_URL}/api/chat/send';
+    const API_URL = `${import.meta.env.VITE_API_URL}/api/chat/send`;
 
     useEffect(() => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });

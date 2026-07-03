@@ -25,21 +25,22 @@ const ReportIssue = () => {
         }
     };
 
+    const fetchIssues = async () => {
+        try {
+            // 🟢 Calls the endpoint: GET /api/issues/my-issues (Fetches only issues reported by current user)
+            const response = await fetchMyReportedIssues();
+            setIssues(response.data || []);
+        } catch (error) {
+            console.error("Failed to load issues:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     // --- Data Fetching: Load User's Previous Issues ---
     useEffect(() => {
-        const fetchIssues = async () => {
-            try {
-                // 🟢 Calls the endpoint: GET /api/issues/my-issues (Fetches only issues reported by current user)
-                const response = await fetchMyReportedIssues();
-                setIssues(response.data || []);
-            } catch (error) {
-                console.error("Failed to load issues:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchIssues();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userRole]); 
 
     const handleChange = (e) => {
