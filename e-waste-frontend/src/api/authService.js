@@ -114,7 +114,7 @@ export const downloadCertificate = () => {
 
 export const completePickupTask = (requestId) => {
     // Calls the PUT /api/requests/pickup/complete/{requestId} endpoint
-    const REQUESTS_URL = '${import.meta.env.VITE_API_URL}/api/requests'; // Assuming this is defined
+    const REQUESTS_URL = `${import.meta.env.VITE_API_URL}/api/requests`; // Assuming this is defined
     return protectedAxios.put(`${REQUESTS_URL}/pickup/complete/${requestId}`);
 };
 
