@@ -32,7 +32,7 @@ const ReportPage = () => {
             const email = getEmail();
             
             // Fetch report data
-            const response = await axios.get('http://localhost:8080/api/requests/report', {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/requests/report`, {
                 headers: {
                     'X-User-Email': email,
                     'Authorization': `Bearer ${token}` 
@@ -55,7 +55,7 @@ const ReportPage = () => {
         const userName = report.userName; 
         
         try {
-            const response = await axios.get('http://localhost:8080/api/requests/report/certificate', {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/requests/report/certificate`, {
                 responseType: 'blob', // Expect binary data (PDF)
                 headers: {
                     'X-User-Email': getEmail(),

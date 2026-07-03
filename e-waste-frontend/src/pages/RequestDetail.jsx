@@ -15,8 +15,8 @@ const RequestDetail = () => {
     const [message, setMessage] = useState('');
     const [rejectionReason, setRejectionReason] = useState('');
 
-    const API_BASE_URL = 'http://localhost:8080/api/requests'; 
-    const UPLOAD_BASE_URL = 'http://localhost:8080'; // Base URL for serving static files
+    const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/requests`; 
+    const UPLOAD_BASE_URL = `${import.meta.env.VITE_API_URL}`; // Base URL for serving static files
 
     // State for tracking active image view
     const [activeImage, setActiveImage] = useState(null); 

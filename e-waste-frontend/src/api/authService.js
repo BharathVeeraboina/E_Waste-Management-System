@@ -4,7 +4,7 @@ import axios from 'axios';
 // Ensure getEmail is imported
 import { getToken, getEmail } from '../utils/localStorage'; 
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = import.meta.env.VITE_API_URL;
 const REQUESTS_URL = `${BASE_URL}/api/requests`;
 
 const protectedAxios = axios.create();
@@ -114,17 +114,17 @@ export const downloadCertificate = () => {
 
 export const completePickupTask = (requestId) => {
     // Calls the PUT /api/requests/pickup/complete/{requestId} endpoint
-    const REQUESTS_URL = 'http://localhost:8080/api/requests'; // Assuming this is defined
+    const REQUESTS_URL = '${import.meta.env.VITE_API_URL}/api/requests'; // Assuming this is defined
     return protectedAxios.put(`${REQUESTS_URL}/pickup/complete/${requestId}`);
 };
 
 export const initiatePickupVerification = (requestId) => {
-    const REQUESTS_URL = `${BASE_URL}/api/requests`;
+    const REQUESTS_URL = `${import.meta.env.VITE_API_URL}/api/requests`;
     return protectedAxios.post(`${REQUESTS_URL}/pickup/verify/initiate/${requestId}`);
 };
 
 // 🟢 NEW: Completes the pickup task using the OTP
 export const verifyAndCompletePickup = (requestId, otpCode) => {
-    const REQUESTS_URL = `${BASE_URL}/api/requests`;
+    const REQUESTS_URL = `${import.meta.env.VITE_API_URL}/api/requests`;
     return protectedAxios.put(`${REQUESTS_URL}/pickup/verify/complete/${requestId}`, { otp: otpCode });
 };

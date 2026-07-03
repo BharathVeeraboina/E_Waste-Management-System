@@ -67,7 +67,7 @@ const AdminDashboard = () => {
         const payload = { status: status, rejectionReason: rejectionReason };
 
         try {
-            await axios.put(`http://localhost:8080/api/requests/admin/status/${requestId}`, payload);
+            await axios.put(`${import.meta.env.VITE_API_URL}/api/requests/admin/status/${requestId}`, payload);
             
             // CRITICAL LOGIC: If APPROVED, open the scheduling modal next.
             if (status === 'APPROVED') {
@@ -100,7 +100,7 @@ const AdminDashboard = () => {
         };
 
         try {
-            await axios.put(`http://localhost:8080/api/requests/admin/status/${scheduleData.requestId}`, payload);
+            await axios.put(`${import.meta.env.VITE_API_URL}/api/requests/admin/status/${scheduleData.requestId}`, payload);
             
             alert(`Request ${scheduleData.requestId} scheduled successfully!`);
             setShowScheduleModal(false); // Close modal on success

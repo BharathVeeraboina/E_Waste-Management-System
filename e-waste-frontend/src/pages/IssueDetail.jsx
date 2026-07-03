@@ -19,7 +19,7 @@ const IssueDetail = () => {
     const [message, setMessage] = useState('');
     const [adminReplyText, setAdminReplyText] = useState(''); // State for Admin's text input
 
-    const API_BASE_URL = 'http://localhost:8080/api/issues'; 
+    const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/issues`; 
 
     const getStatusBadge = (status) => {
         switch (status) {
