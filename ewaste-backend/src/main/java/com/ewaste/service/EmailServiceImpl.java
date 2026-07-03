@@ -20,13 +20,17 @@ public class EmailServiceImpl implements EmailService {
 
     // --- Helper Method for Sending ---
     private void sendSimpleEmail(String toEmail, String subject, String body) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("bharathyadaw74@gmail.com");
-        message.setTo(toEmail);
-        message.setText(body);
-        message.setSubject(subject);
-        mailSender.send(message);
-        System.out.println("Email sent successfully to: " + toEmail);
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom("bharathyadaw74@gmail.com");
+            message.setTo(toEmail);
+            message.setText(body);
+            message.setSubject(subject);
+            mailSender.send(message);
+            System.out.println("Email sent successfully to: " + toEmail);
+        } catch (Exception e) {
+            System.err.println("Mail sending failed to " + toEmail + ". Continuing application flow. Error: " + e.getMessage());
+        }
     }
 
     // --- Interface Method Implementations ---
