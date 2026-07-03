@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Service
 public class ChatbotService {
 
-    @Value("${gemini.api.key}")
+    @Value("${GEMINI_API_KEY:mock-key}")
     private String geminiApiKey;
 
     private final RestTemplate restTemplate = new RestTemplate();
